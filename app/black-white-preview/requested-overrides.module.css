@@ -1,0 +1,32 @@
+.header {
+  height: 76px;
+}
+
+.logo {
+  font-size: 30px;
+}
+
+.nav {
+  gap: 34px !important;
+  font-size: 15px !important;
+  font-weight: 600;
+}
+
+.headerCta {
+  font-size: 15px;
+}
+
+.heroEyebrow {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 760px) {
+  .logo {
+    font-size: 27px;
+  }
+
+  .headerCta {
+    font-size: 11px;
+  }
+}
