@@ -57,6 +57,6 @@ export default function BlackWhitePreview() {
 
     <section id="contact" className={`${full.contact} ${tune.compactContact}`}><p className={styles.eyebrowDark}>Work with us</p><h2>Evaluate a real device,<br/>workload or protection claim.</h2><a className={full.darkButton} href={mailto}>Contact us <ArrowRight/></a></section>
 
-    <footer className={styles.footer}><a className={styles.logo} href="#top">phyres<span>.ai</span></a><p>Independent AI-hardware security evaluation.</p><div><a href="mailto:xuewang1129@hotmail.com"><Mail/> xuewang1129@hotmail.com</a><a href="mailto:peter.horvath2@ru.nl"><Mail/> peter.horvath2@ru.nl</a></div></footer>
+    <footer className={styles.footer}><a className={styles.logo} href="#top">phyres<span>.ai</span></a><div><a href="mailto:xuewang1129@hotmail.com"><Mail/> xuewang1129@hotmail.com</a><a href="mailto:peter.horvath2@ru.nl"><Mail/> peter.horvath2@ru.nl</a></div></footer>
   </main>;
 }
