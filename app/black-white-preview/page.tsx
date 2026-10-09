@@ -27,7 +27,7 @@ export default function BlackWhitePreview() {
       <div className={styles.heroInner}>
         <p className={`${styles.eyebrow} ${requested.heroEyebrow}`}>AI hardware security solutions</p>
         <h1 className={tune.heroTitle}>Secure AI,<br/><span>down to the silicon.</span></h1>
-        <p className={styles.intro}>We connect physical side-channel / fault-injection and adversarial AI methods to secure AI data, models, workloads, and hardware.</p>
+        <p className={styles.intro}>We connect physical side-channel / fault-injection and adversarial AI methods<br/>to secure AI data, models, workloads, and hardware.</p>
         <div className={styles.actions}>
           <a className={styles.primary} href={mailto}>Contact us <ArrowRight/></a>
           <a className={styles.secondary} href="#evaluate">Explore our approaches</a>
