@@ -27,7 +27,6 @@ export default function BlackWhitePreview() {
       <div className={styles.heroInner}>
         <p className={`${styles.eyebrow} ${requested.heroEyebrow}`}>AI hardware security solutions</p>
         <h1 className={tune.heroTitle}>Secure AI,<br/><span>down to the silicon.</span></h1>
-        <p className={styles.intro}>We connect physical side-channel / fault-injection and adversarial AI methods<br/>to secure AI data, models, workloads, and hardware.</p>
         <div className={styles.actions}>
           <a className={styles.primary} href={mailto}>Contact us <ArrowRight/></a>
           <a className={styles.secondary} href="#evaluate">Explore our approaches</a>
@@ -37,7 +36,7 @@ export default function BlackWhitePreview() {
 
     <section id="evaluate" className={`${styles.evaluate} ${tune.compactEvaluate} ${adjust.evaluate}`}>
       <div className={`${styles.titleBlock} ${tune.leftTitle}`}><h2>From hardware red teaming<br/>to secure AI hardware.</h2></div>
-      <p className={styles.statement}>We do more than show that leakage or a fault exists.<br/>We determine what it means for the AI workload.</p>
+      <p className={styles.statement}>We connect physical side-channel / fault-injection and adversarial AI methods<br/>to secure AI data, models, workloads, and hardware.</p>
       <div className={`${styles.services} ${adjust.centeredServices}`}>
         <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy}>Can a physical disturbance alter AI outputs, bypass controls or compromise a safety-relevant decision?</p></div></article>
         <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Data leakage</h3><p className={service.serviceCopy}>Does execution expose model architecture, weights, inputs, outputs or other protected assets?</p></div></article>
