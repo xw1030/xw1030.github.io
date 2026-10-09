@@ -16,7 +16,7 @@ export default function BlackWhitePreview() {
   return <main className={styles.page}>
     <header className={`${styles.header} ${requested.header}`}>
       <a className={`${styles.logo} ${requested.logo}`} href="#top">phyres<span>.ai</span></a>
-      <nav className={requested.nav}><a href="#evaluate">Solutions</a><a href="#workflow">Approach</a><a href="#evidence">Evidence</a><a href="#company">Company</a></nav>
+      <nav className={requested.nav}><a href="#evaluate">Solutions</a><a href="#workflow">Approach</a>{/* <a href="#evidence">Evidence</a> */}<a href="#company">Company</a></nav>
       <a className={`${styles.headerCta} ${requested.headerCta}`} href={mailto}>Contact us</a>
     </header>
 
@@ -47,7 +47,9 @@ export default function BlackWhitePreview() {
 
     <section id="workflow" className={`${full.workflow} ${tune.compactDark} ${adjust.workflow}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>A complete<br/>assurance loop.</h2></div><div className={`${full.workflowList} ${tune.compactWorkflow}`}>{workflow.map(([number,title,text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
 
+    {/* Evidence temporarily hidden; retained for restoration.
     <section id="evidence" className={`${full.evidence} ${tune.compactLight} ${adjust.evidence}`}><div className={`${styles.titleBlock} ${tune.leftTitle}`}><p className={styles.eyebrowDark}>Evidence</p><h2>Tested on real hardware.</h2></div><p className={`${full.evidenceLead} ${tune.leftLead}`}>Peer-reviewed work demonstrates the team’s capability across GPUs, FPGAs and embedded processors.</p><div className={full.evidenceList}>{evidence.map(([publication,title,attack,hardware,result,href,applications],index) => <a href={href} target="_blank" rel="noreferrer" key={title}><span className={full.rowNo}>{String(index+1).padStart(2,'0')}</span><div className={full.paper}><p>{publication}</p><h3>{title}</h3><p>{result}</p></div><div className={full.spec}><p><b>Attack</b>{attack}</p><p><b>Hardware</b>{hardware}</p><p><b>Relevant applications</b>{applications.map(application => <span key={application} style={{display: 'block'}}>{application}</span>)}</p></div><ExternalLink/></a>)}</div></section>
+    */}
 
     <section className={`${full.context} ${tune.compactContext} ${adjust.context}`}><img src="/what-we-evaluate-chip.png" alt="Technical illustration of an AI accelerator package"/><div className={full.contextOverlay}/><div className={full.contextCopy}><p className={styles.eyebrow}>Where it matters</p><h2>High-value AI.<br/>Real-world consequences.</h2></div></section>
 
