@@ -17,6 +17,6 @@
 .company .centeredTeam article > p:last-child { margin: 7px 0 0 !important; max-width: none !important; white-space: normal; font-size: 17px !important; }
 .company .centeredTeam { width: min(100%, 1180px); max-width: none; margin: 52px auto 0 !important; }
 .centeredFunding { width: min(100%, 1080px); margin: 72px auto 0 !important; }
-@media (max-width: 900px) { .memberBio { white-space: normal; } .memberLine { align-items: flex-start; flex-direction: column; gap: 5px; } }
+@media (max-width: 900px) { .memberLine > span { white-space: normal; } .memberBio { white-space: normal; } .memberLine { align-items: flex-start; flex-direction: column; gap: 5px; } }
 @media (max-width: 760px) { .evidence h2 { white-space: normal; } .workflow h2,.context h2,.company h2 { font-size: clamp(2.7rem, 12vw, 4.6rem) !important; } }
 @media (min-width: 1200px) { .workflow article { grid-template-columns: 40px 180px minmax(0, 1fr) !important; } .workflow article p { white-space: nowrap; max-width: none; } }
