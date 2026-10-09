@@ -1,9 +1,9 @@
 .evaluate > p { margin-left: 0 !important; }
 .centeredServices { width: min(100%, 1080px); margin: 0 auto; }
 .workflow h2 { font-size: clamp(3.2rem, 6.2vw, 6.2rem) !important; }
-.workflow article > span { color: #fff !important; font-size: 15px !important; font-weight: 700; }
+.workflow article > span { color: #fff !important; font-size: 19px !important; font-weight: 700; }
 .workflow article h3 { font-size: 19px !important; }
-.workflow article p { font-size: 14px !important; }
+.workflow article p { font-size: 19px !important; }
 .evidence h2 { white-space: nowrap; font-size: clamp(2.9rem, 5.2vw, 5.2rem) !important; }
 .evidence article h3, .evidence a h3 { font-size: 20px !important; }
 .evidence a > span { color: #e3000b !important; font-weight: 700; }
