@@ -37,6 +37,10 @@ http://localhost:3000
 - `public/` — website images and visual assets
 - `app/layout.tsx` — page metadata and global layout
 
+For detailed instructions on changing text, fonts, colours, images and the
+current black-and-white design, see
+[`WEBSITE_EDITING_GUIDE.md`](./WEBSITE_EDITING_GUIDE.md).
+
 ## Build check
 
 Before pushing a substantial change, run:
