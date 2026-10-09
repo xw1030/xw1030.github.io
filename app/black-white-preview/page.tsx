@@ -56,7 +56,9 @@ export default function BlackWhitePreview() {
 
     <section id="company" className={`${full.company} ${tune.compactDark} ${adjust.company}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>Hardware and AI security team<br/>Built for deployment.</h2></div><div className={`${full.team} ${tune.leftTeam} ${adjust.centeredTeam}`}>{team.map(([name,role,bio,profile]) => <article key={name}><div className={adjust.memberLine}>{profile ? <a href={profile} target="_blank" rel="noreferrer"><h3>{name}</h3><ExternalLink/></a> : <h3>{name}</h3>}<span>{role}</span></div><p className={adjust.memberBio}>{bio}</p></article>)}</div><div className={`${full.funding} ${adjust.centeredFunding}`}><p className={styles.eyebrow}>Funding & partnerships</p><p>We are engaging with strategic investors and funding partners as we move from research validation to customer pilots.</p></div></section>
 
+    {/* Work with us temporarily hidden; retained for restoration.
     <section id="contact" className={`${full.contact} ${tune.compactContact}`}><p className={styles.eyebrowDark}>Work with us</p><h2>Evaluate a real device,<br/>workload or protection claim.</h2><a className={full.darkButton} href={mailto}>Contact us <ArrowRight/></a></section>
+    */}
 
     <footer className={styles.footer}><a className={styles.logo} href="#top">phyres<span>.ai</span></a><div><a href="mailto:xwang@phyres.ai"><Mail/> xwang@phyres.ai</a><a href="mailto:phorvath@phyres.ai"><Mail/> phorvath@phyres.ai</a></div></footer>
   </main>;
