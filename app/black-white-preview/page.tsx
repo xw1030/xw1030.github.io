@@ -40,8 +40,8 @@ export default function BlackWhitePreview() {
       <p className={styles.statement}>We do more than show that leakage or a fault exists.<br/>We determine what it means for the AI workload.</p>
       <div className={`${styles.services} ${adjust.centeredServices}`}>
         <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy}>Can a physical disturbance alter AI outputs, bypass controls or compromise a safety-relevant decision?</p></div></article>
-        <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Physical leakage</h3><p className={service.serviceCopy}>Does execution expose model architecture, weights, inputs, outputs or other protected assets?</p></div></article>
-        <article><span>03</span><ShieldCheck/><div><h3 className={service.serviceTitle}>Mitigation & retesting</h3><p className={service.serviceCopy}>Do hardware, runtime or software countermeasures measurably reduce the exposure?</p></div></article>
+        <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Data leakage</h3><p className={service.serviceCopy}>Does execution expose model architecture, weights, inputs, outputs or other protected assets?</p></div></article>
+        <article><span>03</span><ShieldCheck/><div><h3 className={service.serviceTitle}>Mitigation & Validation</h3><p className={service.serviceCopy}>Do hardware, runtime or software countermeasures measurably reduce the exposure?</p></div></article>
       </div>
     </section>
 
