@@ -36,7 +36,7 @@ export default function BlackWhitePreview() {
     </section>
 
     <section id="evaluate" className={`${styles.evaluate} ${tune.compactEvaluate} ${adjust.evaluate}`}>
-      <div className={`${styles.titleBlock} ${tune.leftTitle}`}><h2>From physical red teaming<br/>to secure AI hardware.</h2></div>
+      <div className={`${styles.titleBlock} ${tune.leftTitle}`}><h2>From hardware red teaming<br/>to secure AI hardware.</h2></div>
       <p className={styles.statement}>We do more than show that leakage or a fault exists.<br/>We determine what it means for the AI workload.</p>
       <div className={`${styles.services} ${adjust.centeredServices}`}>
         <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy}>Can a physical disturbance alter AI outputs, bypass controls or compromise a safety-relevant decision?</p></div></article>
