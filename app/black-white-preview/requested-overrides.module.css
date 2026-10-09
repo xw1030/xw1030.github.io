@@ -3,12 +3,12 @@
 }
 
 .logo {
-  font-size: 30px;
+  font-size: 34px;
 }
 
 .nav {
   gap: 34px !important;
-  font-size: 15px !important;
+  font-size: 17px !important;
   font-weight: 600;
 }
 
@@ -23,7 +23,7 @@
 
 @media (max-width: 760px) {
   .logo {
-    font-size: 27px;
+    font-size: 30px;
   }
 
   .headerCta {
