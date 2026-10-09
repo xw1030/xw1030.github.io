@@ -3,22 +3,17 @@
 This guide explains where to edit the website's text, fonts, colours, images,
 links and layout, and how to preview and publish changes safely.
 
-## 1. Which version is which?
+## 1. Current website version
 
-The repository currently contains two versions of the homepage:
+The black-and-white design is the only homepage. The public website is:
 
-| Version | URL | Main content file |
-| --- | --- | --- |
-| Blue version | `/` | `app/page.tsx` |
-| Current black-and-white version | `/black-white-preview` | `app/black-white-preview/page.tsx` |
+<https://phyres-site.vercel.app/>
 
-The current public preview is:
+The root entry point, `app/page.tsx`, loads the implementation from
+`app/black-white-preview/page.tsx`. The former `/black-white-preview` URL
+redirects permanently to `/`.
 
-<https://phyres-site.vercel.app/black-white-preview>
-
-When editing the current design, use the files under
-`app/black-white-preview/`. Editing `app/page.tsx` changes the older blue
-homepage only.
+When editing the website, use the files under `app/black-white-preview/`.
 
 ## 2. The files you will use most often
 
@@ -295,7 +290,7 @@ pnpm dev
 Open:
 
 ```text
-http://localhost:3000/black-white-preview
+http://localhost:3000/
 ```
 
 The development server normally updates the page automatically after a file
@@ -338,25 +333,20 @@ Vercel is connected to the GitHub repository. A push to `main` should trigger
 a new production deployment. Check the Vercel deployment status before
 assuming the new version is live.
 
-Current preview URL:
+Current website URL:
 
-<https://phyres-site.vercel.app/black-white-preview>
+<https://phyres-site.vercel.app/>
 
 If another person still sees an old version:
 
 1. confirm that the latest GitHub commit appears in Vercel as **Ready**;
-2. open the exact `/black-white-preview` URL;
+2. open the root website URL;
 3. perform a hard refresh or open the page in a private browser window;
-4. verify that the person is not using the older root `/` page.
+4. verify that the browser has followed the redirect to `/`.
 
-## 7. Recommended cleanup before the final launch
+## 7. Recommended future cleanup
 
-The repository currently keeps the blue homepage at `/` and the newer design
-at `/black-white-preview`. Once the new design is approved, move it to `/` or
-add a deliberate redirect. This will give visitors a clean main URL and
-remove ambiguity about which file should be edited.
-
-The black-and-white design also contains several layers of CSS overrides.
+The black-and-white design contains several layers of CSS overrides.
 They are documented above, but consolidating them later into fewer,
 well-named style files will make future editing easier and reduce conflicting
 rules.

@@ -6,7 +6,7 @@ Website for **Phyres**, an AI-hardware security startup focused on physical info
 
 The current published version is available at:
 
-**https://ai-hardware-security.liuzrcc.chatgpt.site/**
+**https://phyres-site.vercel.app/**
 
 ## View locally
 
@@ -32,7 +32,8 @@ http://localhost:3000
 
 ## Main files
 
-- `app/page.tsx` — website content and page structure
+- `app/page.tsx` — entry point for the website homepage
+- `app/black-white-preview/page.tsx` — website content and page structure
 - `app/globals.css` — colours, typography and global styles
 - `public/` — website images and visual assets
 - `app/layout.tsx` — page metadata and global layout
