@@ -7,7 +7,7 @@ links and layout, and how to preview and publish changes safely.
 
 The black-and-white design is the only homepage. The GitHub Pages target is:
 
-<https://liuzrcc.github.io/phyres/>
+<https://xw1030.github.io/>
 
 The root entry point, `app/page.tsx`, loads the implementation from
 `app/black-white-preview/page.tsx`. The former `/black-white-preview/` URL
@@ -376,30 +376,26 @@ Adjust the `git add` list to match the files actually edited. Do not use
 
 ## 6. GitHub Pages deployment and cached pages
 
-Run `pnpm build:pages` to export the website to `out/` with the `/phyres`
-base path. Copy that output into the `phyres/` directory of
-`liuzrcc/liuzrcc.github.io`, preserving the rest of the personal website,
-then commit and push in that repository. Check its GitHub Pages deployment
-before assuming the new version is live. No Vercel runtime is needed.
+Run `pnpm build:pages` to export the website to `out/`. The website is
+published at the root of <https://xw1030.github.io/>.
 
-`lib/asset-path.ts` prefixes public images and the favicon; Next.js prefixes
+Push source changes to `main` in `xw1030/xw1030.github.io`. The workflow
+`.github/workflows/pages.yml` installs dependencies, builds the static site,
+and publishes the output with GitHub Pages. Set the repository's Pages
+source to **GitHub Actions**. The original `xw1030/phyres-site` source mirror
+does not run the publishing job. Vercel automatic deployment is disconnected.
+
+`lib/asset-path.ts` prefixes public images and the favicon when the optional
+`NEXT_PUBLIC_BASE_PATH` environment variable is set; Next.js also prefixes
 compiled scripts, styles and fonts. Use `assetPath('/filename')` for new
-public assets. A normal `pnpm dev` still serves the local homepage at `/`.
-
-If the personal website uses Jekyll, include the exported underscore-prefixed
-assets in its build. Do not add a root `.nojekyll` file to an existing Jekyll
-site: that would disable its current build.
-
-Current website URL:
-
-<https://liuzrcc.github.io/phyres/>
+public assets. Leave the base path unset for the current root-domain site.
 
 If another person still sees an old version:
 
-1. confirm that the personal website's latest Pages deployment succeeded;
-2. open the `/phyres/` website URL;
+1. confirm that **Deploy GitHub Pages** succeeded for the latest commit;
+2. open <https://xw1030.github.io/>;
 3. perform a hard refresh or open the page in a private browser window;
-4. check that images, fonts and scripts load beneath `/phyres/`.
+4. check that images, fonts and scripts load without errors.
 
 ## 7. Recommended future cleanup
 

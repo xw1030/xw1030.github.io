@@ -6,7 +6,7 @@ Website for **Phyres**, an AI-hardware security startup focused on physical info
 
 The GitHub Pages deployment target is:
 
-**https://liuzrcc.github.io/phyres/**
+**https://xw1030.github.io/**
 
 The website exports to static HTML, CSS, JavaScript and images. It does not
 require Vercel or a Node.js server in production.
@@ -21,8 +21,8 @@ Requirements:
 Clone the repository and start the development server:
 
 ```bash
-git clone https://github.com/xw1030/phyres-site.git
-cd phyres-site
+git clone https://github.com/xw1030/xw1030.github.io.git
+cd xw1030.github.io
 pnpm install
 pnpm dev
 ```
@@ -59,19 +59,20 @@ The result is static output in `out/`. To preview this root-path build:
 python3 -m http.server 3000 --bind 127.0.0.1 --directory out
 ```
 
-To build for the personal site's `/phyres/` subdirectory:
+To build the GitHub Pages version:
 
 ```bash
 pnpm build:pages
 ```
 
-Copy the contents of `out/` to `phyres/` in the
-`liuzrcc/liuzrcc.github.io` repository, then publish that repository using its
-existing GitHub Pages workflow. Preserve the rest of the personal website.
-All images, fonts and compiled scripts use the `/phyres/` prefix.
-If the destination uses Jekyll, its build must include `phyres/_next/` and
-the exported `__next*.txt` files; do not disable Jekyll for an existing
-Jekyll website. The former preview URL remains a static copy of the page.
+`.github/workflows/pages.yml` builds and publishes `out/` whenever `main`
+is updated in `xw1030/xw1030.github.io`. In that repository's Pages settings,
+select **GitHub Actions** as the source. The website is served at the domain
+root; no `/phyres` prefix is needed. The former preview URL remains a static
+copy of the homepage.
+
+For a future subdirectory deployment, set `NEXT_PUBLIC_BASE_PATH` at build
+time. Public images and compiled scripts will use the same prefix.
 
 ## Editing workflow
 
@@ -81,6 +82,7 @@ Jekyll website. The former preview URL remains a static copy of the page.
 4. Commit the changes with a clear message.
 5. Push to GitHub.
 
-This repository contains the source. To publish an update, rebuild with
-`pnpm build:pages` and update `phyres/` in the personal website repository.
-Pushing source changes here alone does not update GitHub Pages.
+The publishing repository is `xw1030/xw1030.github.io`. Push there to deploy
+automatically, then check the **Deploy GitHub Pages** workflow. The original
+`xw1030/phyres-site` repository can remain a source mirror; its Pages job is
+disabled. Vercel automatic deployment has been disconnected.
