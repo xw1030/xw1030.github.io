@@ -192,7 +192,7 @@ For a section-specific colour, find the relevant CSS class and change its
 
 ```css
 .example {
-  color: #e3000b;
+  color: var(--site-gray);
 }
 ```
 
@@ -201,24 +201,31 @@ The principal global colours are defined as CSS variables in
 
 ```css
 :root {
-  --background: #06152f;
-  --foreground: #eef6ff;
-  --primary: #1269c7;
-  --accent: #38bdf8;
+  --site-black: #000000;
+  --site-white: #ffffff;
+  --site-gray: #767676;
 }
 ```
 
 Changing a global variable may affect many components. For a single heading
 or paragraph, change its local CSS module class instead.
 
-Current visual accents include:
+The page uses only these three base colors, including focus and selection
+states. Reuse these variables instead of introducing new color literals.
+Both background images use full grayscale filters; transparent overlays and
+glows remain neutral. The hero eyebrow and second headline line share gray.
+Gray text uses `--site-gray-text`: the base gray `#767676` on white sections,
+and a 40% gray / 60% white mix (approximately `#c8c8c8`) on black sections.
+Borders retain the base gray.
+The root uses `color-scheme: only light` to preserve these intentionally mixed
+black/white sections. This also prevents Chrome Auto Dark Mode from darkening
+the header while leaving a white rectangle behind the inverted logo.
 
 | Purpose | Colour |
 | --- | --- |
-| Primary red accent | `#e3000b` |
-| Black/dark text | `#090909` or the relevant local value |
-| White background | `#ffffff` or the relevant local value |
-| Blue legacy/global accent | `#38bdf8` |
+| Black | `--site-black` / `#000000` |
+| White | `--site-white` / `#ffffff` |
+| Gray | `--site-gray` / `#767676` |
 
 ### Change font size
 
@@ -263,6 +270,10 @@ Important files include:
 - `public/hero-em-signal.png` — electromagnetic-signal hero background;
 - `public/what-we-evaluate-chip.png` — chip illustration;
 - `public/favicon.svg` — browser icon.
+- `public/phyres-logo-source.png` — uploaded logo artwork, shared by header
+  and footer. `components/brand-logo.tsx` crops its empty margins with an SVG
+  viewBox; `.logoImage` in `requested-overrides.module.css` inverts it for
+  white backgrounds. Keep the image proportions when changing its size.
 
 To replace an image without changing code, use the same filename and image
 format. To use a new filename, change its `/filename` reference in
@@ -305,6 +316,42 @@ pnpm build
 Also inspect the page at desktop and mobile widths. Pay particular attention
 to forced one-line text such as publication headings and team biographies,
 because long wording can overflow on smaller screens.
+
+### Responsive layout and zoom
+
+The final responsive rules are in `requested-overrides.module.css`, scoped
+to its `page` class. Shared variables control the content width (90rem),
+gutters, section spacing and fluid type sizes. Preserve the `rem` limits in
+`clamp()` so text can still grow with browser and user font settings.
+
+The homepage has five vertical scroll-snap pages: hero, services, workflow,
+applications (image and industry grid), and company (team, funding and footer).
+The header sits above an independently scrolling `.slides` region in a
+`100dvh` grid. Native `scroll-snap-type: y mandatory` and `scroll-snap-stop:
+always` settle scrolling at page boundaries without JavaScript wheel or touch
+handlers. The region is keyboard-focusable; navigation anchors target the
+same sections. Reduced-motion preferences disable smooth anchor scrolling.
+
+Pages have a minimum height, not a fixed height: content that exceeds the
+available space on small screens or at large text sizes remains readable
+within that page. Keep this behavior when adding content. The industry grid
+uses three, two or one column according to available width; the team uses two
+columns on shorter desktop viewports. Hero and chip images use
+`object-fit: cover` to preserve their proportions while cropping.
+
+The three service descriptions deliberately stay on one line. They use the
+full available row width; on narrow screens or with enlarged text, each
+description scrolls horizontally and can receive keyboard focus. Preserve
+this local overflow instead of clipping text or widening the whole page.
+
+When editing, check 320px mobile, tablet, desktop and ultrawide widths,
+portrait and landscape, browser zoom from 50% to 400%, and 200% text size.
+Verify that navigation links remain usable, anchor targets stay visible,
+and text and buttons do not overlap or cause horizontal scrolling. Reflow
+and different background crops are expected; do not disable user zoom or
+apply a whole-page transform to force an identical composition.
+Also test wheel and touch scrolling in both directions, Page Up/Down, direct
+section hashes, and reaching the footer on an oversized final page.
 
 ## 5. Commit and push changes
 

@@ -36,24 +36,31 @@
 }
 
 :root {
-  --background: #06152f;
-  --foreground: #eef6ff;
-  --card: #0d2a55;
-  --card-foreground: #eef6ff;
-  --popover: #0b2451;
-  --popover-foreground: #eef6ff;
-  --primary: #1269c7;
-  --primary-foreground: #ffffff;
-  --secondary: #102f60;
-  --secondary-foreground: #dcecff;
-  --muted: #0c254e;
-  --muted-foreground: #a9bdd5;
-  --accent: #38bdf8;
-  --accent-foreground: #0b2451;
-  --destructive: #b42318;
-  --border: color-mix(in srgb, #ffffff 13%, transparent);
-  --input: color-mix(in srgb, #ffffff 16%, transparent);
-  --ring: #38bdf8;
+  /* Preserve the designed black/white surfaces in Chrome Auto Dark Mode. */
+  color-scheme: only light;
+  /* Three base colors; transparency and grayscale images provide tonal depth. */
+  --site-black: #000000;
+  --site-white: #ffffff;
+  --site-gray: #767676;
+  --site-gray-text: var(--site-gray);
+  --background: var(--site-white);
+  --foreground: var(--site-black);
+  --card: var(--site-white);
+  --card-foreground: var(--site-black);
+  --popover: var(--site-white);
+  --popover-foreground: var(--site-black);
+  --primary: var(--site-black);
+  --primary-foreground: var(--site-white);
+  --secondary: var(--site-white);
+  --secondary-foreground: var(--site-black);
+  --muted: var(--site-white);
+  --muted-foreground: var(--site-gray);
+  --accent: var(--site-gray);
+  --accent-foreground: var(--site-white);
+  --destructive: var(--site-black);
+  --border: var(--site-gray);
+  --input: var(--site-gray);
+  --ring: var(--site-gray);
   --radius: 0.5rem;
 }
 
@@ -81,16 +88,16 @@
   font-weight: 650;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: var(--site-gray);
 }
 .section-title {
   font-size: clamp(2.15rem, 4.2vw, 4.4rem);
   line-height: 1;
   letter-spacing: -0.055em;
   font-weight: 650;
-  color: #f3f8ff;
+  color: var(--site-white);
 }
 ::selection {
-  background: #38bdf8;
-  color: #081b3c;
+  background: var(--site-gray);
+  color: var(--site-white);
 }

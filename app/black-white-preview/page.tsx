@@ -1,4 +1,5 @@
 import { ArrowRight, Bot, Car, CircuitBoard, ExternalLink, Factory, HeartPulse, Mail, Radar, Server, ShieldCheck, Zap } from 'lucide-react';
+import { BrandLogo } from '@/components/brand-logo';
 import styles from './preview.module.css';
 import full from './full.module.css';
 import tune from './tuning.module.css';
@@ -13,18 +14,19 @@ const evidence: [string, string, string, string, string, string, string[]][] = [
 const team = [['Peter Horvath','Co-founder · Technical Lead','Senior researcher in hardware and AI security, expert in GPU hardware security.','https://github.com/PeterHorvath10'],['Xue Wang','Co-founder · Business and Strategy','Leads commercial strategy, market validation and customer development, drawing on economics, AI and data science.','https://www.linkedin.com/in/xue-wang-80b982258'],['Lejla Batina','Co-founder · Founding Scientific Advisor','Professor in hardware security, leading expert and pioneer in physical security of cryptographic and AI hardware.','https://www.ru.nl/en/people/batina-l'],['Zhuoran Liu','Co-founder · Founding Scientific Advisor','Assistant Professor in AI and hardware security','https://liuzrcc.github.io/']];
 
 export default function BlackWhitePreview() {
-  return <main className={styles.page}>
+  return <main className={`${styles.page} ${requested.page}`}>
     <header className={`${styles.header} ${requested.header}`}>
-      <a className={`${styles.logo} ${requested.logo}`} href="#top">phyres<span>.ai</span></a>
-      <nav className={requested.nav}><a href="#evaluate">Solutions</a><a href="#workflow">Approach</a>{/* <a href="#evidence">Evidence</a> */}<a href="#company">Company</a></nav>
+      <a className={requested.logo} href="#top" aria-label="Phyres.ai — Home"><BrandLogo className={requested.logoImage}/></a>
+      <nav aria-label="Main navigation" className={requested.nav}><a href="#evaluate">Solutions</a><a href="#workflow">Approach</a>{/* <a href="#evidence">Evidence</a> */}<a href="#company">Company</a></nav>
       <a className={`${styles.headerCta} ${requested.headerCta}`} href={mailto}>Contact us</a>
     </header>
 
-    <section id="top" className={styles.hero}>
+    <div className={requested.slides} tabIndex={0} role="region" aria-label="Phyres page sections">
+    <section id="top" className={`${styles.hero} ${requested.hero}`}>
       <img className={styles.emBackground} src="/hero-em-signal.png" alt="" aria-hidden="true"/>
       <div className={styles.emOverlay} aria-hidden="true"/>
       <div className={styles.shimmer} aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
-      <div className={styles.heroInner}>
+      <div className={`${styles.heroInner} ${requested.heroInner}`}>
         <p className={`${styles.eyebrow} ${requested.heroEyebrow}`}>AI hardware security solutions</p>
         <h1 className={tune.heroTitle}>Secure AI,<br/><span>down to the silicon.</span></h1>
         <div className={styles.actions}>
@@ -34,32 +36,38 @@ export default function BlackWhitePreview() {
       </div>
     </section>
 
-    <section id="evaluate" className={`${styles.evaluate} ${tune.compactEvaluate} ${adjust.evaluate}`}>
+    <section id="evaluate" className={`${styles.evaluate} ${tune.compactEvaluate} ${adjust.evaluate} ${requested.section} ${requested.evaluate}`}>
       <div className={`${styles.titleBlock} ${tune.leftTitle}`}><h2>From hardware red teaming<br/>to secure AI hardware.</h2></div>
       <p className={styles.statement}>We connect physical side-channel / fault-injection and adversarial AI methods<br/>to secure AI data, models, workloads, and hardware.</p>
       <div className={`${styles.services} ${adjust.centeredServices}`}>
-        <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy}>Can a physical disturbance alter AI outputs, bypass controls or compromise a safety-relevant decision?</p></div></article>
-        <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Data leakage</h3><p className={service.serviceCopy}>Does execution expose model architecture, weights, inputs, outputs or other protected assets?</p></div></article>
-        <article><span>03</span><ShieldCheck/><div><h3 className={service.serviceTitle}>Mitigation & Validation</h3><p className={service.serviceCopy}>Do hardware, runtime or software countermeasures measurably reduce the exposure?</p></div></article>
+        <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy} tabIndex={0}>Evaluating the impact of fault injection across the full life cycle of applications running on AI hardware</p></div></article>
+        <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Data leakage</h3><p className={service.serviceCopy} tabIndex={0}>Uncovering side-channel leakage and analyzing the AI workload characteristics that give rise to it</p></div></article>
+        <article><span>03</span><ShieldCheck/><div><h3 className={service.serviceTitle}>Mitigation & Validation</h3><p className={service.serviceCopy} tabIndex={0}>Developing security solutions for AI hardware across the algorithm software and hardware layers</p></div></article>
       </div>
     </section>
 
-    <section id="workflow" className={`${full.workflow} ${tune.compactDark} ${adjust.workflow}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>A complete<br/>assurance loop.</h2></div><div className={`${full.workflowList} ${tune.compactWorkflow}`}>{workflow.map(([number,title,text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section id="workflow" className={`${full.workflow} ${tune.compactDark} ${adjust.workflow} ${requested.section} ${requested.workflow}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>A complete<br/>assurance loop.</h2></div><div className={`${full.workflowList} ${tune.compactWorkflow}`}>{workflow.map(([number,title,text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
 
     {/* Evidence temporarily hidden; retained for restoration.
     <section id="evidence" className={`${full.evidence} ${tune.compactLight} ${adjust.evidence}`}><div className={`${styles.titleBlock} ${tune.leftTitle}`}><p className={styles.eyebrowDark}>Evidence</p><h2>Tested on real hardware.</h2></div><p className={`${full.evidenceLead} ${tune.leftLead}`}>Peer-reviewed work demonstrates the team’s capability across GPUs, FPGAs and embedded processors.</p><div className={full.evidenceList}>{evidence.map(([publication,title,attack,hardware,result,href,applications],index) => <a href={href} target="_blank" rel="noreferrer" key={title}><span className={full.rowNo}>{String(index+1).padStart(2,'0')}</span><div className={full.paper}><p>{publication}</p><h3>{title}</h3><p>{result}</p></div><div className={full.spec}><p><b>Attack</b>{attack}</p><p><b>Hardware</b>{hardware}</p><p><b>Relevant applications</b>{applications.map(application => <span key={application} style={{display: 'block'}}>{application}</span>)}</p></div><ExternalLink/></a>)}</div></section>
     */}
 
-    <section className={`${full.context} ${tune.compactContext} ${adjust.context}`}><img src="/what-we-evaluate-chip.png" alt="Technical illustration of an AI accelerator package"/><div className={full.contextOverlay}/><div className={full.contextCopy}><p className={styles.eyebrow}>Where it matters</p><h2>High-value AI.<br/>Real-world consequences.</h2></div></section>
+    <div id="applications" className={requested.applicationSlide}>
+    <section className={`${full.context} ${tune.compactContext} ${adjust.context} ${requested.context}`}><img src="/what-we-evaluate-chip.png" alt="Technical illustration of an AI accelerator package"/><div className={full.contextOverlay}/><div className={full.contextCopy}><p className={styles.eyebrow}>Where it matters</p><h2>High-value AI.<br/>Real-world consequences.</h2></div></section>
 
-    <section className={`${full.sectors} ${tune.compactSectors}`}>{[[CircuitBoard,'AI chips & accelerators'],[Server,'AI infrastructure'],[HeartPulse,'Medical devices'],[Factory,'Industrial systems'],[Bot,'Robotics & edge sensing'],[Car,'Automotive & mobility']].map(([Icon,label]) => { const I = Icon as typeof CircuitBoard; return <div key={label as string}><I/><span>{label as string}</span></div> })}</section>
+    <section className={`${full.sectors} ${tune.compactSectors} ${requested.sectors}`}>{[[CircuitBoard,'AI chips & accelerators'],[Server,'AI infrastructure'],[HeartPulse,'Medical devices'],[Factory,'Industrial systems'],[Bot,'Robotics & edge sensing'],[Car,'Automotive & mobility']].map(([Icon,label]) => { const I = Icon as typeof CircuitBoard; return <div key={label as string}><I/><span>{label as string}</span></div> })}</section>
 
-    <section id="company" className={`${full.company} ${tune.compactDark} ${adjust.company}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>Hardware and AI security team<br/>Built for deployment.</h2></div><div className={`${full.team} ${tune.leftTeam} ${adjust.centeredTeam}`}>{team.map(([name,role,bio,profile]) => <article key={name}><div className={adjust.memberLine}>{profile ? <a href={profile} target="_blank" rel="noreferrer"><h3>{name}</h3><ExternalLink/></a> : <h3>{name}</h3>}<span>{role}</span></div><p className={adjust.memberBio}>{bio}</p></article>)}</div><div className={`${full.funding} ${adjust.centeredFunding}`}><p className={styles.eyebrow}>Funding & partnerships</p><p>We are engaging with strategic investors and funding partners as we move from research validation to customer pilots.</p></div></section>
+    </div>
+
+    <div className={requested.companySlide}>
+    <section id="company" className={`${full.company} ${tune.compactDark} ${adjust.company} ${requested.section} ${requested.company}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>Hardware and AI security team<br/>From algorithm to implementations.</h2></div><div className={`${full.team} ${tune.leftTeam} ${adjust.centeredTeam}`}>{team.map(([name,role,bio,profile]) => <article key={name}><div className={adjust.memberLine}>{profile ? <a href={profile} target="_blank" rel="noreferrer"><h3>{name}</h3><ExternalLink/></a> : <h3>{name}</h3>}<span>{role}</span></div><p className={adjust.memberBio}>{bio}</p></article>)}</div><div className={`${full.funding} ${adjust.centeredFunding}`}><p className={styles.eyebrow}>Funding & partnerships</p><p>We are engaging with strategic investors and funding partners as we move from research validation to customer pilots.</p></div></section>
 
     {/* Work with us temporarily hidden; retained for restoration.
     <section id="contact" className={`${full.contact} ${tune.compactContact}`}><p className={styles.eyebrowDark}>Work with us</p><h2>Evaluate a real device,<br/>workload or protection claim.</h2><a className={full.darkButton} href={mailto}>Contact us <ArrowRight/></a></section>
     */}
 
-    <footer className={styles.footer}><a className={styles.logo} href="#top">phyres<span>.ai</span></a><div><a href="mailto:xwang@phyres.ai"><Mail/> xwang@phyres.ai</a><a href="mailto:phorvath@phyres.ai"><Mail/> phorvath@phyres.ai</a></div></footer>
+    <footer className={`${styles.footer} ${requested.footer}`}><a className={requested.logo} href="#top" aria-label="Phyres.ai — Home"><BrandLogo className={requested.logoImage}/></a><div><a href="mailto:xwang@phyres.ai"><Mail/> xwang@phyres.ai</a><a href="mailto:phorvath@phyres.ai"><Mail/> phorvath@phyres.ai</a></div></footer>
+    </div>
+    </div>
   </main>;
 }

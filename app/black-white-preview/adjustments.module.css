@@ -1,19 +1,19 @@
 .evaluate > p { margin-left: 0 !important; }
 .centeredServices { width: min(100%, 1080px); margin: 0 auto; }
 .workflow h2 { font-size: clamp(3.2rem, 6.2vw, 6.2rem) !important; }
-.workflow article > span { color: #fff !important; font-size: 19px !important; font-weight: 700; }
+.workflow article > span { color: var(--site-white) !important; font-size: 19px !important; font-weight: 700; }
 .workflow article h3 { font-size: 19px !important; }
 .workflow article p { font-size: 19px !important; }
 .evidence h2 { white-space: nowrap; font-size: clamp(2.9rem, 5.2vw, 5.2rem) !important; }
 .evidence article h3, .evidence a h3 { font-size: 20px !important; }
-.evidence a > span { color: #e3000b !important; font-weight: 700; }
-.evidence a:hover { box-shadow: inset 3px 0 0 #e3000b; }
+.evidence a > span { color: var(--site-black) !important; font-weight: 700; }
+.evidence a:hover { box-shadow: inset 3px 0 0 var(--site-black); }
 .context h2 { font-size: clamp(3.4rem, 6.3vw, 6.4rem) !important; }
 .company h2 { font-size: clamp(3rem, 5.4vw, 5.5rem) !important; }
 .memberLine { display: flex; align-items: baseline; gap: 16px; min-width: 0; }
 .memberLine > a { display: inline-flex; align-items: center; gap: 8px; flex: none; }
 .company .memberLine h3 { margin: 0 !important; font-size: 24px !important; }
-.memberLine > span { color: #888; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.memberLine > span { color: var(--site-gray-text); font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
 .company .centeredTeam article > p:last-child { margin: 7px 0 0 !important; max-width: none !important; white-space: normal; font-size: 17px !important; }
 .company .centeredTeam { width: min(100%, 1180px); max-width: none; margin: 52px auto 0 !important; }
 .centeredFunding { width: min(100%, 1080px); margin: 72px auto 0 !important; }
