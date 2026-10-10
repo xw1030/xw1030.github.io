@@ -16,6 +16,9 @@ jobs:
   build:
     if: github.repository == 'xw1030/xw1030.github.io'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
