@@ -1,15 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/black-white-preview',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
+  output: 'export',
+  trailingSlash: true,
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
 };
 
 export default nextConfig;

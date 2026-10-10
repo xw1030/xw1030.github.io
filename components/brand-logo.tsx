@@ -1,3 +1,5 @@
+import { assetPath } from '@/lib/asset-path';
+
 /** Crop only the attachment's empty margins; preserve the original artwork. */
 export function BrandLogo({ className }: { className?: string }) {
   return (
@@ -9,7 +11,7 @@ export function BrandLogo({ className }: { className?: string }) {
       aria-hidden="true"
       focusable="false"
     >
-      <image href="/phyres-logo-source.png" width="2048" height="684" />
+      <image href={assetPath('/phyres-logo-source.png')} width="2048" height="684" />
     </svg>
   );
 }

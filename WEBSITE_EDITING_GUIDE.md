@@ -5,13 +5,13 @@ links and layout, and how to preview and publish changes safely.
 
 ## 1. Current website version
 
-The black-and-white design is the only homepage. The public website is:
+The black-and-white design is the only homepage. The GitHub Pages target is:
 
-<https://phyres-site.vercel.app/>
+<https://liuzrcc.github.io/phyres/>
 
 The root entry point, `app/page.tsx`, loads the implementation from
-`app/black-white-preview/page.tsx`. The former `/black-white-preview` URL
-redirects permanently to `/`.
+`app/black-white-preview/page.tsx`. The former `/black-white-preview/` URL
+exports a static copy of the same page; no server redirects are required.
 
 When editing the website, use the files under `app/black-white-preview/`.
 
@@ -374,22 +374,32 @@ git push origin main
 Adjust the `git add` list to match the files actually edited. Do not use
 `git add .` when unrelated drafts or image concepts are present.
 
-## 6. Vercel deployment and cached pages
+## 6. GitHub Pages deployment and cached pages
 
-Vercel is connected to the GitHub repository. A push to `main` should trigger
-a new production deployment. Check the Vercel deployment status before
-assuming the new version is live.
+Run `pnpm build:pages` to export the website to `out/` with the `/phyres`
+base path. Copy that output into the `phyres/` directory of
+`liuzrcc/liuzrcc.github.io`, preserving the rest of the personal website,
+then commit and push in that repository. Check its GitHub Pages deployment
+before assuming the new version is live. No Vercel runtime is needed.
+
+`lib/asset-path.ts` prefixes public images and the favicon; Next.js prefixes
+compiled scripts, styles and fonts. Use `assetPath('/filename')` for new
+public assets. A normal `pnpm dev` still serves the local homepage at `/`.
+
+If the personal website uses Jekyll, include the exported underscore-prefixed
+assets in its build. Do not add a root `.nojekyll` file to an existing Jekyll
+site: that would disable its current build.
 
 Current website URL:
 
-<https://phyres-site.vercel.app/>
+<https://liuzrcc.github.io/phyres/>
 
 If another person still sees an old version:
 
-1. confirm that the latest GitHub commit appears in Vercel as **Ready**;
-2. open the root website URL;
+1. confirm that the personal website's latest Pages deployment succeeded;
+2. open the `/phyres/` website URL;
 3. perform a hard refresh or open the page in a private browser window;
-4. verify that the browser has followed the redirect to `/`.
+4. check that images, fonts and scripts load beneath `/phyres/`.
 
 ## 7. Recommended future cleanup
 

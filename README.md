@@ -4,9 +4,12 @@ Website for **Phyres**, an AI-hardware security startup focused on physical info
 
 ## View the website
 
-The current published version is available at:
+The GitHub Pages deployment target is:
 
-**https://phyres-site.vercel.app/**
+**https://liuzrcc.github.io/phyres/**
+
+The website exports to static HTML, CSS, JavaScript and images. It does not
+require Vercel or a Node.js server in production.
 
 ## View locally
 
@@ -50,6 +53,26 @@ Before pushing a substantial change, run:
 pnpm build
 ```
 
+The result is static output in `out/`. To preview this root-path build:
+
+```bash
+python3 -m http.server 3000 --bind 127.0.0.1 --directory out
+```
+
+To build for the personal site's `/phyres/` subdirectory:
+
+```bash
+pnpm build:pages
+```
+
+Copy the contents of `out/` to `phyres/` in the
+`liuzrcc/liuzrcc.github.io` repository, then publish that repository using its
+existing GitHub Pages workflow. Preserve the rest of the personal website.
+All images, fonts and compiled scripts use the `/phyres/` prefix.
+If the destination uses Jekyll, its build must include `phyres/_next/` and
+the exported `__next*.txt` files; do not disable Jekyll for an existing
+Jekyll website. The former preview URL remains a static copy of the page.
+
 ## Editing workflow
 
 1. Pull the latest `main` branch.
@@ -58,4 +81,6 @@ pnpm build
 4. Commit the changes with a clear message.
 5. Push to GitHub.
 
-The hosted website is deployed separately from the GitHub repository. Pushing to GitHub updates the source code but does not by itself guarantee that the public website has been redeployed.
+This repository contains the source. To publish an update, rebuild with
+`pnpm build:pages` and update `phyres/` in the personal website repository.
+Pushing source changes here alone does not update GitHub Pages.

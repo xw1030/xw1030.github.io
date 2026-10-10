@@ -1,5 +1,6 @@
 import { ArrowRight, Bot, Car, CircuitBoard, ExternalLink, Factory, HeartPulse, Mail, Radar, Server, ShieldCheck, Zap } from 'lucide-react';
 import { BrandLogo } from '@/components/brand-logo';
+import { assetPath } from '@/lib/asset-path';
 import styles from './preview.module.css';
 import full from './full.module.css';
 import tune from './tuning.module.css';
@@ -23,7 +24,7 @@ export default function BlackWhitePreview() {
 
     <div className={requested.slides} tabIndex={0} role="region" aria-label="Phyres page sections">
     <section id="top" className={`${styles.hero} ${requested.hero}`}>
-      <img className={styles.emBackground} src="/hero-em-signal.png" alt="" aria-hidden="true"/>
+      <img className={styles.emBackground} src={assetPath('/hero-em-signal.png')} alt="" aria-hidden="true"/>
       <div className={styles.emOverlay} aria-hidden="true"/>
       <div className={styles.shimmer} aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
       <div className={`${styles.heroInner} ${requested.heroInner}`}>
@@ -53,7 +54,7 @@ export default function BlackWhitePreview() {
     */}
 
     <div id="applications" className={requested.applicationSlide}>
-    <section className={`${full.context} ${tune.compactContext} ${adjust.context} ${requested.context}`}><img src="/what-we-evaluate-chip.png" alt="Technical illustration of an AI accelerator package"/><div className={full.contextOverlay}/><div className={full.contextCopy}><p className={styles.eyebrow}>Where it matters</p><h2>High-value AI.<br/>Real-world consequences.</h2></div></section>
+    <section className={`${full.context} ${tune.compactContext} ${adjust.context} ${requested.context}`}><img src={assetPath('/what-we-evaluate-chip.png')} alt="Technical illustration of an AI accelerator package"/><div className={full.contextOverlay}/><div className={full.contextCopy}><p className={styles.eyebrow}>Where it matters</p><h2>High-value AI.<br/>Real-world consequences.</h2></div></section>
 
     <section className={`${full.sectors} ${tune.compactSectors} ${requested.sectors}`}>{[[CircuitBoard,'AI chips & accelerators'],[Server,'AI infrastructure'],[HeartPulse,'Medical devices'],[Factory,'Industrial systems'],[Bot,'Robotics & edge sensing'],[Car,'Automotive & mobility']].map(([Icon,label]) => { const I = Icon as typeof CircuitBoard; return <div key={label as string}><I/><span>{label as string}</span></div> })}</section>
 
