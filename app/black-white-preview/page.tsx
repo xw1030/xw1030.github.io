@@ -42,7 +42,7 @@ export default function BlackWhitePreview() {
       <p className={styles.statement}>We connect physical side-channel / fault-injection and adversarial AI methods<br/>to secure AI data, models, workloads, and hardware.</p>
       <div className={`${styles.services} ${adjust.centeredServices}`}>
         <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy} tabIndex={0}>Evaluating the impact of fault injection across the full life cycle of applications running on AI hardware</p></div></article>
-        <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Data leakage</h3><p className={service.serviceCopy} tabIndex={0}>Uncovering side-channel leakage and analyzing the AI workload characteristics that give rise to it</p></div></article>
+        <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Data leakage</h3><p className={service.serviceCopy} tabIndex={0}>Revealing side-channel leakage and analyzing the AI workload characteristics that give rise to it</p></div></article>
         <article><span>03</span><ShieldCheck/><div><h3 className={service.serviceTitle}>Mitigation & Validation</h3><p className={service.serviceCopy} tabIndex={0}>Developing security solutions for AI hardware across the algorithm software and hardware layers</p></div></article>
       </div>
     </section>
