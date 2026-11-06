@@ -12,7 +12,7 @@ const members = [
   ['Peter Horvath','Hardware & AI security','Researches physical side-channel attacks on AI hardware, with a focus on GPU security. Showed that edge GPUs leak neural-network weights through electromagnetic emissions (BarraCUDA, USENIX Security 2025).','https://github.com/PeterHorvath10'],
   ['Zhuoran Liu','Adversarial ML','Assistant Professor in AI and hardware security. Researches adversarial machine learning and the security and privacy of AI systems, connecting attacks on models with their physical implementations.','https://liuzrcc.github.io/'],
   ['Xue Wang','Economics & AI','PhD in Economics with a research background in AI.','https://www.linkedin.com/in/xue-wang-80b982258'],
-  ['Ilia Shumailov','AI security','','https://iliaishacked.github.io/'],
+  ['Ilia Shumailov','AI security','',''],
   ['Lejla Batina','Physical security','Professor in hardware security and a pioneer in the physical security of cryptographic and AI hardware. Co-authored CSI NN (USENIX Security 2019), one of the first works to reverse-engineer neural networks through side channels.','https://www.ru.nl/en/people/batina-l'],
 ];
 const team = members.map(([name]) => name);
@@ -43,7 +43,7 @@ export default function BlackWhitePreview() {
       </div>
     </section>
 
-    <section id="team" className={`${full.company} ${tune.compactDark} ${adjust.company} ${requested.section} ${requested.company}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>Hardware and AI security team</h2></div><div className={`${full.team} ${tune.leftTeam} ${adjust.centeredTeam}`}>{members.map(([name,role,bio,profile]) => <article key={name}><div className={adjust.memberLine}><a href={profile} target="_blank" rel="noreferrer"><h3>{name}</h3><ExternalLink/></a><span>{role}</span></div>{bio && <p className={adjust.memberBio}>{bio}</p>}</article>)}</div></section>
+    <section id="team" className={`${full.company} ${tune.compactDark} ${adjust.company} ${requested.section} ${requested.company}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>Hardware and AI security team</h2></div><div className={`${full.team} ${tune.leftTeam} ${adjust.centeredTeam}`}>{members.map(([name,role,bio,profile]) => <article key={name}><div className={adjust.memberLine}>{profile ? <a href={profile} target="_blank" rel="noreferrer"><h3>{name}</h3><ExternalLink/></a> : <h3>{name}</h3>}<span>{role}</span></div>{bio && <p className={adjust.memberBio}>{bio}</p>}</article>)}</div></section>
 
     <div className={requested.applicationSlide}>
     <section id="evidence" className={pubs.publications}>
