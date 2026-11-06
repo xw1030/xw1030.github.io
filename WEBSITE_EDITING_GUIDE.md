@@ -270,10 +270,11 @@ Important files include:
 - `public/hero-em-signal.png` — electromagnetic-signal hero background;
 - `public/what-we-evaluate-chip.png` — chip illustration;
 - `public/favicon.svg` — browser icon.
-- `public/phyres-logo-source.png` — uploaded logo artwork, shared by header
-  and footer. `components/brand-logo.tsx` crops its empty margins with an SVG
-  viewBox; `.logoImage` in `requested-overrides.module.css` inverts it for
-  white backgrounds. Keep the image proportions when changing its size.
+- Logo: `components/brand-logo.tsx` inlines the paths from
+  `phyres-p-lockup-light.svg` (background removed, cropped with the SVG
+  viewBox), shared by header and footer. It draws in `currentColor`; set the
+  colour with `.logoImage` in `requested-overrides.module.css`. Keep the
+  image proportions when changing its size.
 
 To replace an image without changing code, use the same filename and image
 format. To use a new filename, change its `/filename` reference in
@@ -324,8 +325,8 @@ to its `page` class. Shared variables control the content width (90rem),
 gutters, section spacing and fluid type sizes. Preserve the `rem` limits in
 `clamp()` so text can still grow with browser and user font settings.
 
-The homepage has five vertical scroll-snap pages: hero, services, workflow,
-applications (image and industry grid), and company (team, funding and footer).
+The homepage has three vertical scroll-snap pages: research areas, team, and
+selected publications (with the footer).
 The header sits above an independently scrolling `.slides` region in a
 `100dvh` grid. Native `scroll-snap-type: y mandatory` and `scroll-snap-stop:
 always` settle scrolling at page boundaries without JavaScript wheel or touch

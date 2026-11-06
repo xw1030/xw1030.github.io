@@ -1,77 +1,65 @@
-import { ArrowRight, Bot, Car, CircuitBoard, ExternalLink, Factory, HeartPulse, Mail, Radar, Server, ShieldCheck, Zap } from 'lucide-react';
+import { ExternalLink, Radar, Zap } from 'lucide-react';
 import { BrandLogo } from '@/components/brand-logo';
-import { assetPath } from '@/lib/asset-path';
 import styles from './preview.module.css';
 import full from './full.module.css';
 import tune from './tuning.module.css';
 import service from './service.module.css';
 import adjust from './adjustments.module.css';
 import requested from './requested-overrides.module.css';
+import pubs from './publications.module.css';
 
-const mailto = 'mailto:xwang@phyres.ai?subject=Discuss%20an%20AI%20hardware%20evaluation';
+const members = [
+  ['Peter Horvath','Hardware & AI security','Researches physical side-channel attacks on AI hardware, with a focus on GPU security. Showed that edge GPUs leak neural-network weights through electromagnetic emissions (BarraCUDA, USENIX Security 2025).','https://github.com/PeterHorvath10'],
+  ['Zhuoran Liu','Adversarial ML','Assistant Professor in AI and hardware security. Researches adversarial machine learning and the security and privacy of AI systems, connecting attacks on models with their physical implementations.','https://liuzrcc.github.io/'],
+  ['Xue Wang','Economics & AI','PhD in Economics with a research background in AI.','https://www.linkedin.com/in/xue-wang-80b982258'],
+  ['Ilia Shumailov','AI security','','https://iliaishacked.github.io/'],
+  ['Lejla Batina','Physical security','Professor in hardware security and a pioneer in the physical security of cryptographic and AI hardware. Co-authored CSI NN (USENIX Security 2019), one of the first works to reverse-engineer neural networks through side channels.','https://www.ru.nl/en/people/batina-l'],
+];
+const team = members.map(([name]) => name);
 
-const workflow = [['01','Threat definition','Define protected assets, attacker access and measurable success criteria.'],['02','Physical testing','Capture physical leakage or inject controlled voltage, clock and electromagnetic disturbances.'],['03','AI-level impact','Determine how physical effects change model data, parameters, outputs or control flow.'],['04','Mitigation','Develop practical countermeasures across hardware, runtimes and software.'],['05','Re-evaluation','Re-test the implementation and quantify the remaining exposure.']];
-const evidence: [string, string, string, string, string, string, string[]][] = [['IEEE SaTML 2026','Kraken: Higher-order EM Side-Channel Attacks on DNNs in Near and Far Field','Higher-order EM analysis · near and far field','GPU Tensor Cores · LLM workloads','Extracted parameters from GPU Tensor Cores and observed LLM hyperparameter and weight leakage at distances up to 100 cm through glass.','https://arxiv.org/abs/2603.02891',["AI infrastructure · LLM inference","Enterprise software · AI copilots","Healthcare · Medical image analysis"]],['USENIX Security 2025','BarraCUDA: Edge GPUs do Leak DNN Weights','Correlation electromagnetic analysis','NVIDIA Jetson Nano GPU','Recovered parameters from real-world convolutional neural networks running on an edge GPU.','https://www.usenix.org/conference/usenixsecurity25/presentation/horvath',["Automotive · Camera-based object recognition","Robotics · Object recognition for navigation","Industrial · Visual defect detection"]],['ACNS Workshops 2024','CNN Architecture Extraction on Edge GPU','EM side channel + deep learning','NVIDIA Jetson Nano GPU','Distinguished 15 popular CNN architectures from physical emissions during inference.','https://arxiv.org/abs/2401.13575',["Industrial · Visual defect classification","Automotive · Camera-based scene classification","Robotics · Visual scene recognition"]],['USENIX Security 2019','CSI NN: Reverse Engineering of Neural Network Architectures','Electromagnetic side-channel analysis','ARM Cortex-M3','Recovered neural-network structure, including layer and activation information, from embedded execution.','https://www.usenix.org/conference/usenixsecurity19/technical-sessions',["Wearables · Activity recognition","Consumer electronics · Wake-word detection","Industrial · Sensor anomaly detection"]],['Research · 2025','ScaAR: Real-world Edge Neural Networks Leak Private Interactions','EM analysis + neural classification','AMD-Xilinx ZCU104 · Raspberry Pi','Classified private interactions and distinguished LLM tokens from physical execution traces.','https://arxiv.org/abs/2501.14512',["Consumer electronics · On-device AI assistants","Smart home · Voice-command recognition","Healthcare · Medical image classification"]]];
-const team = [['Peter Horvath','Co-founder · Technical Lead','Senior researcher in hardware and AI security, expert in GPU hardware security.','https://github.com/PeterHorvath10'],['Xue Wang','Co-founder · Business and Strategy','PhD in Economics with a research background in AI, leading business development, market validation, and strategic partnerships.','https://www.linkedin.com/in/xue-wang-80b982258'],['Lejla Batina','Co-founder · Founding Scientific Advisor','Professor in hardware security, leading expert and pioneer in physical security of cryptographic and AI hardware.','https://www.ru.nl/en/people/batina-l'],['Zhuoran Liu','Co-founder · Founding Scientific Advisor','Assistant Professor in AI and hardware security, expert in adversarial ML and physical security.','https://liuzrcc.github.io/']];
+type Publication = { badge: string; title: string; authors: string[]; venue: string; links: [string, string][] };
+const publications: Publication[] = [
+  { badge: 'arXiv 2026', title: 'Triggering Stealthy Feature Map Backdoors via Physical Fault Injection in Embedded Neural Networks', authors: ['Steyn Hommes', 'Vincent Dankbaar', 'Tanguy Stekke', 'Xiaomeng Wang', 'Lisanne Weidmann', 'Senna van Hoek', 'Durba Chatterjee', 'Lejla Batina', 'Zhuoran Liu'], venue: 'arXiv preprint arXiv:2607.09473, 2026', links: [['arXiv', 'https://arxiv.org/abs/2607.09473'], ['PDF', 'https://arxiv.org/pdf/2607.09473']] },
+  { badge: 'SaTML 2026', title: 'Kraken: Higher-order EM Side-Channel Attacks on DNNs in Near and Far Field', authors: ['Peter Horvath', 'Ilia Shumailov', 'Lukasz Chmielewski', 'Lejla Batina', 'Yuval Yarom'], venue: 'In IEEE Conference on Secure and Trustworthy Machine Learning (SaTML), 2026', links: [['arXiv', 'https://arxiv.org/abs/2603.02891']] },
+  { badge: 'USENIX Security 2025', title: 'BarraCUDA: Edge GPUs do Leak DNN Weights', authors: ['Peter Horvath', 'Lukasz Chmielewski', 'Léo Weissbart', 'Lejla Batina', 'Yuval Yarom'], venue: 'In 34th USENIX Security Symposium (USENIX Security 25), Seattle, WA, 2025', links: [['PDF', 'https://www.usenix.org/system/files/usenixsecurity25-horvath.pdf'], ['Website', 'https://www.usenix.org/conference/usenixsecurity25/presentation/horvath']] },
+  { badge: 'USENIX Security 2024', title: 'SoK: Neural Network Extraction Through Physical Side Channels', authors: ['Peter Horvath', 'Dirk Lauret', 'Zhuoran Liu', 'Lejla Batina'], venue: 'In 33rd USENIX Security Symposium (USENIX Security 24), Philadelphia, PA, 2024', links: [['PDF', 'https://www.usenix.org/system/files/usenixsecurity24-horvath.pdf'], ['Website', 'https://www.usenix.org/conference/usenixsecurity24/presentation/horvath']] },
+  { badge: 'USENIX Security 2019', title: 'CSI NN: Reverse Engineering of Neural Network Architectures Through Electromagnetic Side Channel', authors: ['Lejla Batina', 'Shivam Bhasin', 'Dirmanto Jap', 'Stjepan Picek'], venue: 'In 28th USENIX Security Symposium (USENIX Security 19), Santa Clara, CA, 2019', links: [['PDF', 'https://www.usenix.org/system/files/sec19-batina.pdf'], ['Website', 'https://www.usenix.org/conference/usenixsecurity19/presentation/batina']] },
+];
 
 export default function BlackWhitePreview() {
   return <main className={`${styles.page} ${requested.page}`}>
     <header className={`${styles.header} ${requested.header}`}>
-      <a className={requested.logo} href="#top" aria-label="Phyres.ai — Home"><BrandLogo className={requested.logoImage}/></a>
-      <nav aria-label="Main navigation" className={requested.nav}><a href="#evaluate">Solutions</a><a href="#workflow">Approach</a>{/* <a href="#evidence">Evidence</a> */}<a href="#company">Company</a></nav>
-      <a className={`${styles.headerCta} ${requested.headerCta}`} href={mailto}>Contact us</a>
+      <a className={requested.logo} href="#evaluate" aria-label="Phyres.ai — Home"><BrandLogo className={requested.logoImage}/></a>
+      <nav aria-label="Main navigation" className={requested.nav}><a href="#evaluate">Research</a><a href="#team">Team</a><a href="#evidence">Publications</a></nav>
     </header>
 
     <div className={requested.slides} tabIndex={0} role="region" aria-label="Phyres page sections">
-    <section id="top" className={`${styles.hero} ${requested.hero}`}>
-      {/* Background image temporarily disabled.
-      <img className={styles.emBackground} src={assetPath('/hero-em-signal.png')} alt="" aria-hidden="true"/>
-      */}
-      <div className={styles.emOverlay} aria-hidden="true"/>
-      <div className={styles.shimmer} aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
-      <div className={`${styles.heroInner} ${requested.heroInner}`}>
-        <p className={`${styles.eyebrow} ${requested.heroEyebrow}`}>AI hardware security solutions</p>
-        <h1 className={tune.heroTitle}>Secure AI,<br/><span>down to the silicon.</span></h1>
-        <div className={styles.actions}>
-          <a className={styles.primary} href={mailto}>Contact us <ArrowRight/></a>
-          <a className={styles.secondary} href="#evaluate">Explore our approaches</a>
-        </div>
-      </div>
-    </section>
-
     <section id="evaluate" className={`${styles.evaluate} ${tune.compactEvaluate} ${adjust.evaluate} ${requested.section} ${requested.evaluate}`}>
-      <div className={`${styles.titleBlock} ${tune.leftTitle}`}><h2>From hardware red teaming<br/>to secure AI hardware.</h2></div>
-      <p className={styles.statement}>We connect physical side-channel / fault-injection and adversarial AI methods<br/>to secure AI data, models, workloads, and hardware.</p>
+      <div className={`${styles.titleBlock} ${tune.leftTitle}`}><h2>Where hardware security<br/>meets AI security.</h2></div>
+      <p className={styles.statement}>Our research combines physical side-channel / fault-injection analysis with adversarial ML<br/>to understand and protect AI data, models, workloads, and hardware.</p>
       <div className={`${styles.services} ${adjust.centeredServices}`}>
-        <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy} tabIndex={0}>Evaluating the impact of fault injection across the full life cycle of applications running on AI hardware</p></div></article>
+        <article><span>01</span><Zap/><div><h3 className={service.serviceTitle}>Fault injection & integrity</h3><p className={service.serviceCopy} tabIndex={0}>Studying how injected faults affect AI applications across their full life cycle on real hardware</p></div></article>
         <article><span>02</span><Radar/><div><h3 className={service.serviceTitle}>Data leakage</h3><p className={service.serviceCopy} tabIndex={0}>Revealing side-channel leakage and analyzing the AI workload characteristics that give rise to it</p></div></article>
-        <article><span>03</span><ShieldCheck/><div><h3 className={service.serviceTitle}>Mitigation & Validation</h3><p className={service.serviceCopy} tabIndex={0}>Developing security solutions for AI hardware across the algorithm software and hardware layers</p></div></article>
       </div>
     </section>
 
-    <section id="workflow" className={`${full.workflow} ${tune.compactDark} ${adjust.workflow} ${requested.section} ${requested.workflow}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>A complete<br/>assurance loop.</h2></div><div className={`${full.workflowList} ${tune.compactWorkflow}`}>{workflow.map(([number,title,text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section id="team" className={`${full.company} ${tune.compactDark} ${adjust.company} ${requested.section} ${requested.company}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>Hardware and AI security team</h2></div><div className={`${full.team} ${tune.leftTeam} ${adjust.centeredTeam}`}>{members.map(([name,role,bio,profile]) => <article key={name}><div className={adjust.memberLine}><a href={profile} target="_blank" rel="noreferrer"><h3>{name}</h3><ExternalLink/></a><span>{role}</span></div>{bio && <p className={adjust.memberBio}>{bio}</p>}</article>)}</div></section>
 
-    {/* Evidence temporarily hidden; retained for restoration.
-    <section id="evidence" className={`${full.evidence} ${tune.compactLight} ${adjust.evidence}`}><div className={`${styles.titleBlock} ${tune.leftTitle}`}><p className={styles.eyebrowDark}>Evidence</p><h2>Tested on real hardware.</h2></div><p className={`${full.evidenceLead} ${tune.leftLead}`}>Peer-reviewed work demonstrates the team’s capability across GPUs, FPGAs and embedded processors.</p><div className={full.evidenceList}>{evidence.map(([publication,title,attack,hardware,result,href,applications],index) => <a href={href} target="_blank" rel="noreferrer" key={title}><span className={full.rowNo}>{String(index+1).padStart(2,'0')}</span><div className={full.paper}><p>{publication}</p><h3>{title}</h3><p>{result}</p></div><div className={full.spec}><p><b>Attack</b>{attack}</p><p><b>Hardware</b>{hardware}</p><p><b>Relevant applications</b>{applications.map(application => <span key={application} style={{display: 'block'}}>{application}</span>)}</p></div><ExternalLink/></a>)}</div></section>
-    */}
+    <div className={requested.applicationSlide}>
+    <section id="evidence" className={pubs.publications}>
+      <h2 className={pubs.heading}>Selected Publications</h2>
+      <ol className={pubs.list}>{publications.map(p => <li key={p.title} className={pubs.entry}>
+        <span className={pubs.badge}>{p.badge}</span>
+        <div>
+          <p className={pubs.title}>{p.title}</p>
+          <p className={pubs.authors}>{p.authors.map((a, i) => <span key={a}>{i > 0 && ', '}{team.includes(a) ? <b>{a}</b> : a}</span>)}</p>
+          <p className={pubs.venue}>{p.venue}</p>
+          <div className={pubs.links}>{p.links.map(([label, href]) => <a key={label} href={href} target="_blank" rel="noreferrer">{label}</a>)}</div>
+        </div>
+      </li>)}</ol>
+    </section>
 
-    <div id="applications" className={requested.applicationSlide}>
-    <section className={`${full.context} ${tune.compactContext} ${adjust.context} ${requested.context}`}>{/* Background image temporarily disabled.
-      <img src={assetPath('/what-we-evaluate-chip.png')} alt="Technical illustration of an AI accelerator package"/>
-    */}<div className={full.contextOverlay}/><div className={full.contextCopy}><p className={styles.eyebrow}>Where it matters</p><h2>High-value AI.<br/>Real-world consequences.</h2></div></section>
-
-    <section className={`${full.sectors} ${tune.compactSectors} ${requested.sectors}`}>{[[CircuitBoard,'AI chips & accelerators'],[Server,'AI infrastructure'],[HeartPulse,'Medical devices'],[Factory,'Industrial systems'],[Bot,'Robotics & edge sensing'],[Car,'Automotive & mobility']].map(([Icon,label]) => { const I = Icon as typeof CircuitBoard; return <div key={label as string}><I/><span>{label as string}</span></div> })}</section>
-
-    </div>
-
-    <div className={requested.companySlide}>
-    <section id="company" className={`${full.company} ${tune.compactDark} ${adjust.company} ${requested.section} ${requested.company}`}><div className={`${full.darkIntro} ${tune.leftDarkIntro}`}><h2>Hardware and AI security team<br/>From algorithm to implementations.</h2></div><div className={`${full.team} ${tune.leftTeam} ${adjust.centeredTeam}`}>{team.map(([name,role,bio,profile]) => <article key={name}><div className={adjust.memberLine}>{profile ? <a href={profile} target="_blank" rel="noreferrer"><h3>{name}</h3><ExternalLink/></a> : <h3>{name}</h3>}<span>{role}</span></div><p className={adjust.memberBio}>{bio}</p></article>)}</div><div className={`${full.funding} ${adjust.centeredFunding}`}><p className={styles.eyebrow}>Funding & partnerships</p><p>We are engaging with strategic investors and funding partners as we move from research validation to customer pilots.</p></div></section>
-
-    {/* Work with us temporarily hidden; retained for restoration.
-    <section id="contact" className={`${full.contact} ${tune.compactContact}`}><p className={styles.eyebrowDark}>Work with us</p><h2>Evaluate a real device,<br/>workload or protection claim.</h2><a className={full.darkButton} href={mailto}>Contact us <ArrowRight/></a></section>
-    */}
-
-    <footer className={`${styles.footer} ${requested.footer}`}><a className={requested.logo} href="#top" aria-label="Phyres.ai — Home"><BrandLogo className={requested.logoImage}/></a><div><a href="mailto:xwang@phyres.ai"><Mail/> xwang@phyres.ai</a><a href="mailto:phorvath@phyres.ai"><Mail/> phorvath@phyres.ai</a></div></footer>
+    <footer className={`${styles.footer} ${requested.footer}`}><a className={requested.logo} href="#evaluate" aria-label="Phyres.ai — Home"><BrandLogo className={requested.logoImage}/></a></footer>
     </div>
     </div>
   </main>;

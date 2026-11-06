@@ -54,8 +54,8 @@
   width: 100%;
   height: auto;
   overflow: hidden;
-  /* The original white-on-black artwork becomes black on our white surfaces. */
-  filter: grayscale(1) invert(1) contrast(4);
+  /* Inline SVG drawn in currentColor; matches the lockup's near-black ink. */
+  color: #080808;
 }
 
 .page .nav {
@@ -190,8 +190,7 @@
   overflow: hidden;
 }
 
-.page :is(.workflow, .context, .company)::before,
-.page :is(.workflow, .context, .company)::after {
+.page :is(.workflow, .context, .company)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -205,43 +204,16 @@
     radial-gradient(circle at 17% 78%, rgb(255 255 255 / 6%), transparent 22%);
 }
 
-.page .workflow::after {
-  background:
-    radial-gradient(circle at 76% 18%, rgb(255 255 255 / 75%) 0 1px, transparent 2px),
-    radial-gradient(circle at 91% 45%, rgb(255 255 255 / 50%) 0 1px, transparent 2px),
-    radial-gradient(circle at 63% 73%, rgb(255 255 255 / 45%) 0 1px, transparent 2px),
-    radial-gradient(circle at 23% 86%, rgb(255 255 255 / 35%) 0 1px, transparent 2px);
-  filter: drop-shadow(0 0 6px rgb(255 255 255 / 55%));
-}
-
 .page .context::before {
   background:
     radial-gradient(circle at 72% 38%, rgb(255 255 255 / 11%), transparent 21%),
     radial-gradient(circle at 30% 75%, rgb(255 255 255 / 6%), transparent 18%);
 }
 
-.page .context::after {
-  background:
-    radial-gradient(circle at 80% 23%, rgb(255 255 255 / 72%) 0 1px, transparent 2px),
-    radial-gradient(circle at 67% 54%, rgb(255 255 255 / 42%) 0 1px, transparent 2px),
-    radial-gradient(circle at 89% 78%, rgb(255 255 255 / 58%) 0 1px, transparent 2px),
-    radial-gradient(circle at 42% 31%, rgb(255 255 255 / 35%) 0 1px, transparent 2px);
-  filter: drop-shadow(0 0 6px rgb(255 255 255 / 50%));
-}
-
 .page .company::before {
   background:
     radial-gradient(circle at 14% 28%, rgb(255 255 255 / 8%), transparent 20%),
     radial-gradient(circle at 84% 72%, rgb(255 255 255 / 9%), transparent 22%);
-}
-
-.page .company::after {
-  background:
-    radial-gradient(circle at 9% 48%, rgb(255 255 255 / 55%) 0 1px, transparent 2px),
-    radial-gradient(circle at 29% 17%, rgb(255 255 255 / 38%) 0 1px, transparent 2px),
-    radial-gradient(circle at 77% 63%, rgb(255 255 255 / 70%) 0 1px, transparent 2px),
-    radial-gradient(circle at 93% 31%, rgb(255 255 255 / 40%) 0 1px, transparent 2px);
-  filter: drop-shadow(0 0 6px rgb(255 255 255 / 50%));
 }
 
 .page :is(.workflow, .company) > *,

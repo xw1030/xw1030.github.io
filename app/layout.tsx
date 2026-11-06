@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Phyres.ai | AI Hardware Security',
+  title: 'Phyres.ai | AI Hardware Security Research',
   icons: { icon: assetPath('/favicon.svg') },
   description:
-    'Independent fault-injection, execution-integrity and physical-leakage evaluation for AI running on real hardware.',
+    'Research on side-channel leakage and fault injection in AI running on real hardware.',
 };
 
 export default function RootLayout({
